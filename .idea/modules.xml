@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jeff-code.iml" filepath="$PROJECT_DIR$/jeff-code.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oms/oms.iml" filepath="$PROJECT_DIR$/oms/oms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OMS-BOOT.iml" filepath="$PROJECT_DIR$/OMS-BOOT.iml" />
     </modules>
   </component>
 </project>
