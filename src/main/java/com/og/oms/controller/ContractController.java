@@ -2,7 +2,6 @@ package com.og.oms.controller;
 
 import com.og.oms.enums.ResultCode;
 import com.og.oms.model.Contract;
-import com.og.oms.model.DateTableParam;
 import com.og.oms.service.IContractService;
 import com.og.oms.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,9 @@ public class ContractController extends BaseController {
      * @return
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Object getContractList(DateTableParam dtp) {
-        return contractService.selectPage(dtp.getPage());
+    public JsonResult getContractList() {
+        //        return contractService.selectPage(dtp.getPage());
+        return new JsonResult(contractService.selectList(null));
     }
 
     /**
@@ -103,5 +103,15 @@ public class ContractController extends BaseController {
             ret = new JsonResult(ResultCode.EXCEPTION);
         }
         return ret;
+    }
+
+    /**
+     * 获取合同类型用于下拉列表展示
+     *
+     * @return
+     */
+    @RequestMapping(value = "select", method = RequestMethod.GET)
+    public JsonResult getContractType() {
+        return new JsonResult(contractService.getContractType());
     }
 }

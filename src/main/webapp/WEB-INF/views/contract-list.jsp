@@ -22,8 +22,8 @@
 </nav>
 <div class="page-container">
     <div class="text-c"> 日期范围：
-        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">-
-        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
+        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:180px;">-
+        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:180px;">
         <input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name="">
         <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
     </div>
@@ -76,7 +76,7 @@
         </tbody>
     </table>
 </div>
-    <script type="text/javascript" src="javascript/contract-list.js?id=1"></script>
+    <script type="text/javascript" src="javascript/contract-list.js"></script>
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript">
     /*

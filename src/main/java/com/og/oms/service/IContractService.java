@@ -5,6 +5,7 @@ import com.og.oms.model.Contract;
 import com.og.oms.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -51,9 +52,17 @@ public interface IContractService extends IService<Contract> {
 
     /**
      * 删除合同资料
+     *
      * @param user
      * @param id
      * @return
      */
     boolean delContract(User user, Integer id);
+
+    /**
+     * 获取合同类型用于下拉列表展示
+     *
+     * @return
+     */
+    Map<Integer, String> getContractType();
 }

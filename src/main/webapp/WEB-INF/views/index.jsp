@@ -78,7 +78,7 @@
                 <ul>
                     <li><a data-href="server-list" data-title="服务器资料" href="javascript:void(0)">服务器资料</a></li>
                     <li><a data-href="domain-list" data-title="域名资料" href="javascript:void(0)">域名资料</a></li>
-                    <li><a data-href="supplier-list" data-title="供应商资料" href="javascript:void(0)">供应商资料</a></li>
+                    <li><a data-href="producer-list" data-title="供应商资料" href="javascript:void(0)">供应商资料</a></li>
                     <li><a data-href="contract-list" data-title="合同资料" href="javascript:void(0)">合同资料</a></li>
                     <li><a data-href="serverroom-list" data-title="机房资料" href="javascript:void(0)">机房资料</a></li>
                     <li><a data-href="network-list" data-title="线路资料" href="javascript:void(0)">线路资料</a></li>

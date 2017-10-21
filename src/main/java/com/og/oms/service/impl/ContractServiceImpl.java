@@ -2,12 +2,11 @@ package com.og.oms.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.og.oms.common.Context;
 import com.og.oms.dao.ContractMapper;
+import com.og.oms.enums.ContractType;
 import com.og.oms.model.Contract;
 import com.og.oms.model.User;
 import com.og.oms.service.IContractService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -26,12 +25,6 @@ import java.util.Map;
  */
 @Service
 public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> implements IContractService {
-
-    /**
-     * 系统上下文
-     */
-    @Autowired
-    private Context context;
 
     @Override
     public List<Object> getContractList() {
@@ -61,6 +54,15 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
     @Override
     public boolean delContract(User user, Integer id) {
         return this.deleteById(id);
+    }
+
+    @Override
+    public Map<Integer, String> getContractType() {
+        Map<Integer, String> map = new HashMap<>( ContractType.values().length);
+        for(ContractType type : ContractType.values()){
+            map.put(type.getCode(), type.getText());
+        }
+        return map;
     }
 
     private Map<String, Object> buildContract(Contract contract) {

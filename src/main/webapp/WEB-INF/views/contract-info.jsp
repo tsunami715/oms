@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,17 +18,22 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>合同类型：</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="" placeholder="" id="type" name="type">
+                <span class="select-box">
+                    <select id="type" name="type" class="select">
+                        <c:forEach var="item" items="${contractType}">
+                            <option value="${item.key }">${item.value }</option>
+                        </c:forEach>
+                    </select>
+                </span>
             </div>
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>供应商：</label>
-            <div class="formControls col-xs-8 col-sm-3"> <span class="select-box">
-				<select id="producerId" name="producerId" class="select">
-					<option value="0">一级分类</option>
-					<option value="1">一级分类</option>
-					<option value="11">├二级分类</option>
-					<option value="12">├二级分类</option>
-					<option value="13">├二级分类</option>
-				</select>
+            <div class="formControls col-xs-8 col-sm-3">
+                <span class="select-box">
+                    <select id="producerId" name="producerId" class="select">
+                        <c:forEach var="item" items="${contractType}">
+                            <option value="${item.key }">${item.value }</option>
+                        </c:forEach>
+                    </select>
 				</span>
             </div>
         </div>
@@ -73,12 +79,6 @@
     </form>
 </article>
 
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
-
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
@@ -93,30 +93,30 @@
 
         $("#form-admin-add").validate({
             rules:{
-                adminName:{
-                    required:true,
-                    minlength:4,
-                    maxlength:16
-                },
-                password:{
+                type:{
                     required:true,
                 },
-                password2:{
-                    required:true,
-                    equalTo: "#password"
-                },
-                sex:{
+                producerId:{
                     required:true,
                 },
-                phone:{
+                startTime:{
+                    required:true,
+                },
+                endTime:{
+                    required:true,
+                },
+                path:{
                     required:true,
                     isPhone:true,
                 },
-                email:{
+                signatureCompany:{
                     required:true,
                     email:true,
                 },
-                adminRole:{
+                signaturePerson:{
+                    required:true,
+                },
+                remark:{
                     required:true,
                 },
             },

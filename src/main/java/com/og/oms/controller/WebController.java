@@ -1,11 +1,20 @@
 package com.og.oms.controller;
 
+import com.og.oms.service.IContractService;
+import com.og.oms.service.IProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class WebController {
+    @Autowired
+    private IContractService contractService;
+
+    @Autowired
+    private IProducerService producerService;
+
     /**
      * 首页
      *
@@ -63,11 +72,13 @@ public class WebController {
 
     /**
      * 合同详细页面
+     *
      * @param model
      * @return
      */
     @RequestMapping(value = "contract-info")
-    public ModelAndView contractInfoPage(ModelAndView model){
+    public ModelAndView contractInfoPage(ModelAndView model) {
+        model.addObject("contractType", contractService.getContractType());
         return model;
     }
 
@@ -99,8 +110,8 @@ public class WebController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "supplier-list")
-    public ModelAndView supplierListPage(ModelAndView model) {
+    @RequestMapping(value = "producer-list")
+    public ModelAndView producerListPage(ModelAndView model) {
         return model;
     }
 

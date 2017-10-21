@@ -28,6 +28,6 @@ function bindDataTable(tableName, requestUrl, queryData, columns) {
         "displayLength" : 20,
         "lengthChange" : false,
         "searching" : false,
-        "bServerSide" : true
+        "bServerSide" : false
     });
 };

@@ -2,8 +2,10 @@ package com.og.oms.common;
 
 import com.og.oms.enums.ContractType;
 import com.og.oms.model.User;
+import com.og.oms.service.IProducerService;
 import com.og.oms.service.IUserService;
 import com.og.oms.utils.EnumUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class Context {
 
+    @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IProducerService producerService;
 
 
     ConcurrentHashMap<Integer, User> userMap = new ConcurrentHashMap();
@@ -20,6 +26,9 @@ public class Context {
 
     @PostConstruct
     private void init() {
+        // 初始化供应商枚举
+        producerService.initProducerEnum();
+
         initDynamicEnums();
     }
 
@@ -28,7 +37,7 @@ public class Context {
         EnumUtil.addEnum(ContractType.class, "d", new Class[]{Integer.class, String.class}, new Object[]{2, "测试2"});
         EnumUtil.addEnum(ContractType.class, "d", new Class[]{Integer.class, String.class}, new Object[]{3, "测试3"});
         EnumUtil.addEnum(ContractType.class, "e", new Class[]{Integer.class, String.class}, new Object[]{4, "测试4"});
-        EnumUtil.addEnum(ContractType.class, "f", new Class[]{Integer.class, String.class}, new Object[]{5, "测试3"});
+        EnumUtil.addEnum(ContractType.class, "f", new Class[]{Integer.class, String.class}, new Object[]{5, "测试5"});
     }
 
     /**

@@ -2,10 +2,11 @@ package com.og.oms.enums;
 
 import com.baomidou.mybatisplus.enums.IEnum;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.og.oms.utils.EnumUtil;
 
 import java.io.Serializable;
 
-public enum ContractType implements IEnum{
+public enum ProducerEnum implements IEnum {
     NORMAL(0, "其他");
 
     /**
@@ -17,9 +18,21 @@ public enum ContractType implements IEnum{
      */
     private String name;
 
-    ContractType(Integer code, String name) {
+    ProducerEnum(Integer code, String name) {
         this.code = code;
         this.name = name;
+    }
+
+    /**
+     * 增加一个枚举实例
+     *
+     * @param code
+     * @param name
+     */
+    public static void addEnum(Integer code, String name) {
+        Class[] additionalTypes = new Class[]{Integer.class, String.class};
+        Object[] additionalValues = new Object[]{code, name};
+        EnumUtil.addEnum(ProducerEnum.class, String.valueOf(code), additionalTypes, additionalValues);
     }
 
     @Override
@@ -40,11 +53,11 @@ public enum ContractType implements IEnum{
         this.code = code;
     }
 
-    public String getText() {
+    public String getName() {
         return name;
     }
 
-    public void setText(String text) {
+    public void setName(String text) {
         this.name = text;
     }
 }
