@@ -2,6 +2,7 @@ package com.og.oms.controller;
 
 import com.og.oms.enums.ResultCode;
 import com.og.oms.model.Contract;
+import com.og.oms.model.DateTableParam;
 import com.og.oms.service.IContractService;
 import com.og.oms.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class ContractController extends BaseController {
      * @return
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Object getContractList() {
-        return new JsonResult(contractService.getContractList());
+    public Object getContractList(DateTableParam dtp) {
+        return contractService.selectPage(dtp.getPage());
     }
 
     /**
@@ -54,13 +55,14 @@ public class ContractController extends BaseController {
      *
      * @param userId
      * @param contract
+     * @param result
      * @return
      */
     @RequestMapping(method = RequestMethod.PUT)
     public JsonResult addContract(@ModelAttribute("userId") Integer userId, @Valid Contract contract, BindingResult result) {
         JsonResult ret;
         if(contractService.addContract(this.getUser(userId), contract)) {
-             ret = new JsonResult();
+            ret = new JsonResult();
         } else {
             ret = new JsonResult(ResultCode.EXCEPTION);
         }
