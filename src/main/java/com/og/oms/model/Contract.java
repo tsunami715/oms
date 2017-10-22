@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  * <p>
- * <p>
+ *     合同资料对象
  * </p>
  *
  * @author jeff
@@ -52,8 +52,8 @@ public class Contract extends Model<Contract> {
     /**
      * 合同保存路径
      */
-    @NotEmpty(message="路径不能为空")
-    @Size(min=1, max = 35, message = "长度")
+    @NotEmpty(message="合同保存路径不能为空!")
+    @Size(max = 35, message = "长度")
     private String path;
     /**
      * 供应商id

@@ -76,14 +76,14 @@ public class WebAspect {
             }
         } catch(Throwable e) {
             if(!(e instanceof OmsException)) {
-                logger.error("执行{}方法异常", e, methodName);
+                logger.error("执行 {} 方法异常", e, methodName);
             }
 
             result = new JsonResult(ResultCode.EXCEPTION, "发生异常：" + e.getMessage());
         }
 
         long costMs = System.currentTimeMillis() - beginTime;
-        logger.info("{}请求结束，耗时：{}ms", methodName, costMs);
+        logger.info("{} 请求结束，耗时： {} ms", methodName, costMs);
 
         return result;
     }

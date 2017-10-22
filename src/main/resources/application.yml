@@ -1,3 +1,4 @@
+server.contextPath: /oms/
 server.port: 8999
 
 
@@ -38,19 +39,20 @@ spring.datasource:
     type: com.alibaba.druid.pool.DruidDataSource
 
 
-#log
-logging:
-  config: classpath:logback.xml
-  path: D:\jeff-project\log
-
-
+##log
 #logging:
-#  path: E:\springbootlog #/home/_xyy_/output/SpringBootDemo/logs
-#  level:
-#    root: INFO
-#    org.springframework.web: INFO
-#    hibernate: ERROR
-#logging.file=demo.log
+#  config: classpath:logback.xml
+#  path: D:\jeff-project\log
+
+
+logging:
+  path: E:\springbootlog #/home/_xyy_/output/SpringBootDemo/logs
+  file: E:\springbootlog\demo.log
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    hibernate: ERROR
+
 
 
 # 设置邮箱主机

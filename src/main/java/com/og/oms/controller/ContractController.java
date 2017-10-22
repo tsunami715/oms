@@ -33,7 +33,7 @@ public class ContractController extends BaseController {
      *
      * @return
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public JsonResult getContractList() {
         //        return contractService.selectPage(dtp.getPage());
         return new JsonResult(contractService.selectList(null));
