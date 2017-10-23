@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="oms" />
         <module name="OMS-BOOT" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="oms" target="1.8" />
       <module name="OMS-BOOT" target="1.8" />
     </bytecodeTargetLevel>
   </component>

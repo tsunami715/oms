@@ -21,7 +21,7 @@ public class Context {
     private IProducerService producerService;
 
 
-    ConcurrentHashMap<Integer, User> userMap = new ConcurrentHashMap();
+    private ConcurrentHashMap<Integer, User> userMap = new ConcurrentHashMap();
 
 
     @PostConstruct

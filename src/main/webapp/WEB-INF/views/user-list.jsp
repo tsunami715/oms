@@ -39,10 +39,10 @@
                 <%--<c:forEach var="item" items="${contractType}"><option value="${item.key }">${item.value }</option></c:forEach>--%>
             <%--</select>--%>
             日期范围：
-            <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" name="datemin" class="input-text Wdate" style="width:180px;">-
-            <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:180px;">
-            <input type="text" class="input-text" style="width:250px" placeholder="输入管理员帐号" id="" name="">
-            <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
+            <input id="datemin" name="datemin" type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })"  class="input-text Wdate" style="width:180px;">-
+            <input id="datemax" name="datemax" type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" class="input-text Wdate" style="width:180px;">
+            <input id="" name="" type="text" class="input-text" style="width:250px" placeholder="输入管理员帐号">
+            <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
         </div>
     </form>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
@@ -67,9 +67,7 @@
     </table>
 </div>
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
 <script type="text/javascript">
     // 表单中字段的key
     var columns = [
@@ -90,21 +88,25 @@
         },
     ];
 
-        $("#form-admin-add").validate({
-            submitHandler:function(form){
-                $(form).ajaxSubmit({
-                    url: "user" ,
-                    success: function(jsonResult){
+    $("#form-admin-add").validate({
+        submitHandler:function(form){
+            $(form).ajaxSubmit({
+                url: "user",
+                success: function(jsonResult){
+                    if(jsonResult.code == 200){
                         bindJsonTable("userList", jsonResult.data, columns);
-                    },
-                    error: function(XmlHttpRequest, textStatus, errorThrown){
-                        layer.msg('error!',{icon:1,time:1000});
+                    } else {
+                        layer.msg(jsonResult.message,{icon:1,time:1000});
                     }
-                });
-            }
-        });
+                },
+                error: function(XmlHttpRequest, textStatus, errorThrown){
+                    layer.msg('error!',{icon:1,time:1000});
+                }
+            });
+        }
+    });
 
-        $("#form-admin-add").submit();
+    $("#form-admin-add").submit();
 </script>
 </body>
 </html>

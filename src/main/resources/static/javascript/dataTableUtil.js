@@ -45,6 +45,5 @@ function bindJsonTable(tableName, data, columns){
         "lengthChange": false,
         "searching": false,
         "bServerSide": false
-
     });
 }

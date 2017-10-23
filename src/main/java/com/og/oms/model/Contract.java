@@ -97,6 +97,10 @@ public class Contract extends Model<Contract> {
     @TableField("update_user")
     private String updateUser;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }

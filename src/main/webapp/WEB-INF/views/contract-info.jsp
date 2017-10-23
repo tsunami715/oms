@@ -89,7 +89,10 @@
             checkboxClass: 'icheckbox-blue',
             radioClass: 'iradio-blue',
             increaseArea: '20%'
-        });
+        })
+
+        // form赋值.可能有用
+        // http://www.cnblogs.com/wind-wang/p/6690115.html
 
         $("#form-admin-add").validate({
             rules:{
