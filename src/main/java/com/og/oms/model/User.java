@@ -3,6 +3,9 @@ package com.og.oms.model;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.og.oms.enums.GroupEnum;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,7 +16,7 @@ import java.util.Date;
  * </p>
  *
  * @author jeff
- * @since 2017-10-15
+ * @since 2017-10-17
  */
 @TableName("t_user")
 public class User extends Model<User> {
@@ -27,6 +30,8 @@ public class User extends Model<User> {
     /**
      * 创建时间
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@TableField("create_time")
 	private Date createTime;
     /**
@@ -38,7 +43,7 @@ public class User extends Model<User> {
      * 用户组id
      */
 	@TableField("group_id")
-	private Integer groupId;
+	private GroupEnum groupId;
     /**
      * 用户id
      */
@@ -55,6 +60,8 @@ public class User extends Model<User> {
     /**
      * 最后登录时间
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@TableField("last_login_time")
 	private Date lastLoginTime;
     /**
@@ -72,8 +79,10 @@ public class User extends Model<User> {
     /**
      * 修改时间
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@TableField("update_time")
-	private String updateTime;
+	private Date updateTime;
     /**
      * 修改人账号
      */
@@ -105,11 +114,11 @@ public class User extends Model<User> {
 		this.createUser = createUser;
 	}
 
-	public Integer getGroupId() {
+	public GroupEnum getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(Integer groupId) {
+	public void setGroupId(GroupEnum groupId) {
 		this.groupId = groupId;
 	}
 
@@ -169,11 +178,11 @@ public class User extends Model<User> {
 		this.remark = remark;
 	}
 
-	public String getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(String updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

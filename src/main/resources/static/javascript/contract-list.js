@@ -20,18 +20,17 @@ var columns = [
 
 // 页面加载后执行
 $(document).ready(function() {
-    // 初始化表格信息
-    bindDataTable("contractList", "contract", "[]", columns);
+    $.get("contract", {
+
+    }, function (jsonResult) {
+        bindJsonTable("contractList", jsonResult.data, columns);
+    }, "json");
 })
-
-
 
 /*合同资料-增加*/
 function contract_add(title, url) {
     layer_show(title, url, '800', '500');
 }
-
-/*合同资料-编辑*/
 
 /*管理员-编辑*/
 function admin_edit(title, url) {

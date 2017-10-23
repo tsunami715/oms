@@ -93,9 +93,9 @@
             <dd>
                 <ul>
                     <li><a data-href="group-list" data-title="组别管理" href="javascript:;">组别管理</a></li>
-                    <li><a data-href="admin-list" data-title="员工管理" href="javascript:void(0)">员工管理</a></li>
-                    <li><a data-href="" data-title="操作日志" href="javascript:;">操作日志</a></li>
-                    <li><a data-href="feedback-list.html" data-title="登录日志" href="javascript:void(0)">登录日志</a></li>
+                    <li><a data-href="user-list" data-title="员工管理" href="javascript:;">员工管理</a></li>
+                    <li><a data-href="log-list" data-title="操作日志" href="javascript:;">操作日志</a></li>
+                    <li><a data-href="login-list" data-title="登录日志" href="javascript:;">登录日志</a></li>
                 </ul>
             </dd>
         </dl>

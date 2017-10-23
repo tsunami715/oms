@@ -1,25 +1,25 @@
 package com.og.oms.controller;
 
-import com.og.oms.common.Context;
-import com.og.oms.model.User;
+import com.og.oms.service.IUserService;
+import com.og.oms.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @RestController
-public class UserController {
+@RequestMapping(value = "user")
+@SessionAttributes(names = "userId", types = Integer.class)
+public class UserController extends BaseController {
 
     @Autowired
-    private Context context;
+    private IUserService userService;
 
-    @RequestMapping("login")
-    public void login(HttpServletRequest req, String account) {
-        User user = new User();
-        user.setId(3);
-        user.setAccount(account);
-        context.addUser(user);
-        req.getSession().setAttribute("userId", user.getId());
+    @RequestMapping(method = RequestMethod.GET)
+    public JsonResult getUserList(Integer type1, Integer type2, Integer type3, Date datemin, Date datemax) {
+        return new JsonResult(userService.getUserList());
     }
 }

@@ -1,5 +1,7 @@
 package com.og.oms.controller;
 
+import com.og.oms.common.Context;
+import com.og.oms.model.User;
 import com.og.oms.service.IContractService;
 import com.og.oms.service.IProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +9,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class WebController {
+    private Context context;
+
     @Autowired
     private IContractService contractService;
 
     @Autowired
     private IProducerService producerService;
+
+
+    @RequestMapping(value = "login")
+    public void login(HttpServletRequest req, String account) {
+        User user = new User();
+        user.setId(3);
+        user.setAccount(account);
+        context.addUser(user);
+        req.getSession().setAttribute("userId", user.getId());
+    }
 
     /**
      * 首页
@@ -45,17 +61,6 @@ public class WebController {
      */
     @RequestMapping(value = "admin-list")
     public ModelAndView adminListPage(ModelAndView model) {
-        return model;
-    }
-
-    /**
-     * 权限组列表页面
-     *
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "group-list")
-    public ModelAndView groupListPage(ModelAndView model) {
         return model;
     }
 
@@ -178,6 +183,55 @@ public class WebController {
      */
     @RequestMapping(value = "system-data")
     public ModelAndView dataListPage(ModelAndView model) {
+        return model;
+    }
+
+
+    //===================================================================================
+    //===============================权限控制============================================
+    //===================================================================================
+
+    /**
+     * 权限组列表页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "group-list")
+    public ModelAndView groupListPage(ModelAndView model) {
+        return model;
+    }
+
+    /**
+     * 用户列表页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "user-list")
+    public ModelAndView userListPage(ModelAndView model) {
+        return model;
+    }
+
+    /**
+     * 日志列表页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "log-list")
+    public ModelAndView logListPage(ModelAndView model) {
+        return model;
+    }
+
+    /**
+     * 登录日志列表
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "login-list")
+    public ModelAndView loginListPage(ModelAndView model) {
         return model;
     }
 }
